@@ -2,15 +2,15 @@ from django.http import HttpResponse
 from django.shortcuts import render
 import numpy as np
 import joblib
-
+from tensorflow.keras.models import load_model
 
 def home(request):
     return render(request, "home.html")
 
 
 def result(request):
-
-    model = joblib.load('neural_network.sav')
+    
+    model = load_model('neural_network.h5')
     min_max_scaler = joblib.load('scaling_nn.sav')
 
     arr = np.array([])
